@@ -5,16 +5,19 @@
 
 {% block content %} 
 
-
+<!-- se tiver produtos -->
+{% if produtos %}
 <h1>Nossos Produtos</h1>
 <p>Confira nossos produtos</p>
 
-
+<!-- roda os produtos-->
 {% for produto in produtos %}
 
  <h2>{{ produto.nome }}</h2>
  <p>{{ produto.descricao }}</p>
 
 {% endfor %}
-
-{% endblock %}
+<!-- se não tiver produtos -->
+{% else %}
+   <p>Não existem produtos</p>
+{% endif %}

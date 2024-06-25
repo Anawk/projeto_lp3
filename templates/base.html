@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
     <nav class="menu">
@@ -24,5 +25,12 @@
     <p>Desenvolvido por Ana Maria</p>
 </footer>
 {% endblock %}
+
+
+    <nav>
+        <a href="/termosdeuso">Termos de Uso </a>
+        <a href="/politicadeprivacidade">Politica de privacidade</a>
+        <a href="/privacidade">Privacidade</a>
+    </nav>
 
 </html>
