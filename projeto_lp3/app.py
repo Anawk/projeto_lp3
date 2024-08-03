@@ -25,48 +25,38 @@ def contato():
 
 def produtos():
    lista_produtos = [
-       {"nome" : "esmalte anita" , "descricao" : "coleção capadocia"},
-       {"nome" : "esmalte risqué" , "descricao" : "coleção bridgertons"},
-       {"nome" : "esmalte colorama" , "descricao" : "coleção divertidamente 2"}
+       {"nome" : "esmalte anita" , "descricao" : "coleção capadocia", "imagem" : "anita.png"},
+       {"nome" : "esmalte risqué" , "descricao" : "coleção bridgertons", "imagem" : "risque.png"},
+       {"nome" : "esmalte colorama" , "descricao" : "coleção divertidamente 2", "imagem" : "colorama.jpg"}
    ]
 
    return render_template("produtos.html", produtos=lista_produtos)
 
 
-# Abaixo está o exercicio sobre rotas, praticado em aula de reposição.
-
-# página/servicos retornar "Nossos Serviços"
-# pagina /gerar-cpf retornar Cpf Aleatorio
-# pagina /gerar-cnpj retornar Cnpj aleatório
-
-
-# /servicos - pagina serviços
-
 @app.route("/servicos")
 def servicos():
     return "<h1> Nossos Serviços </h1>"
 
-
 @app.route("/gerar-cpf")
 def gerar_cpf():
-    return f"CPF: {cpf.generate(True)}"
+    cpf_gerado = cpf.generate(True)
+    return render_template("cpf.html", cpf=cpf_gerado)
 
 @app.route("/gerar-cnpj")
 def gerar_cnpj():
-    return f"CNPJ: {cnpj.generate(True)}"
+    cnpj_gerado = cnpj.generate(True)
+    return render_template("cnpj.html", cnpj=cnpj_gerado)
 
-@app.route("/gerar-5-cpfs")
-def gerar_5_cpfs():
-    cpfs = []
-    for i in range(5):
-        cpfs.append(cpf.generate(True))
-    return  f'CPFS: {cpfs} '
+@app.route("/termosdeuso")
+def termosdeuso():
+    return render_template("termosdeuso.html")
 
-@app.route("/gerar-5-cnpjs")
-def gerar_5_cnpjs():
-    cnpjs = []
-    for i in range(5):
-        cnpjs.append(cnpj.generate(True))
-    return  f'CNPJS: {cnpjs} '
+@app.route("/politicadeprivacidade")
+def politicadeprivacidade():
+    return render_template("politicadeprivacidade.html")
+
+@app.route("/privacidade")
+def privacidade():
+    return render_template("privacidade.html")
 
 app.run(debug=True)

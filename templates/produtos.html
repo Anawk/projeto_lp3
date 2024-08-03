@@ -1,23 +1,25 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %} Produtos {% endblock %}
 
-
 {% block content %} 
-
-<!-- se tiver produtos -->
+<!-- Se houver produtos -->
 {% if produtos %}
 <h1>Nossos Produtos</h1>
 <p>Confira nossos produtos</p>
 
-<!-- roda os produtos-->
+<!-- Itera sobre os produtos -->
 {% for produto in produtos %}
-
- <h2>{{ produto.nome }}</h2>
- <p>{{ produto.descricao }}</p>
-
+   <div class="produto">
+      <h2>{{ produto.nome }}</h2>
+      <p>{{ produto.descricao }}</p>
+      <img src="{{ url_for('static', filename='images/' + produto.imagem) }}" alt="{{ produto.nome }}" style="width: 200px; height: auto;">
+   </div>
+   <br/>
 {% endfor %}
-<!-- se não tiver produtos -->
+
+<!-- Se não houver produtos -->
 {% else %}
    <p>Não existem produtos</p>
 {% endif %}
+{% endblock %}
